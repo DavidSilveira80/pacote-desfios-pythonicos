@@ -8,10 +8,39 @@ por 'good' e retorne a string resultante.
 
 Exemplo: 'The dinner is not that bad!' retorna 'The dinner is good!'
 """
+def verivica_antes_depois_da_palavra(sentenca, indice_palavra):
+    verificado_antes_depois = (True if sentenca[indice_palavra - 1] == ' ' or
+                                       sentenca[indice_palavra - 1] == ''  and
+                                       sentenca[indice_palavra + 3] == ' ' or
+                                       sentenca[indice_palavra + 3] == '!' or
+                                       sentenca[indice_palavra + 3] == '.'
+                                       else False)
+    return verificado_antes_depois
+
+
+def meu_regex(s):
+    indice_not = s.index('not')
+    indice_bad = s.index('bad')
+
+    he_not = verivica_antes_depois_da_palavra(s, indice_not)
+
+    he_bad = verivica_antes_depois_da_palavra(s, indice_bad)
+
+    return he_not and he_bad
 
 def not_bad(s):
     # +++ SUA SOLUÇÃO +++
-    return
+    if ('bad' in s and 'not' in s):
+        indice_not = s.index('not')
+        indice_bad = s.index('bad')
+
+        if (indice_bad > indice_not) and (meu_regex(s)):
+            resp = s.replace(s[indice_not: indice_bad + 3], 'good')
+        else:
+            resp = s
+    elif 'not' not in s or 'bad' not in s:
+        resp = s
+    return resp
 
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
