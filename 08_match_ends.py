@@ -10,7 +10,14 @@ PS: Python não possui o operador ++, porém += funciona.
 
 def match_ends(words):
     # +++ SUA SOLUÇÃO +++
-    return
+    contador = 0
+    soma = 0
+
+    while contador < len(words):
+        if len(words[contador]) >= 2 and words[contador][0] == words[contador][-1]:
+            soma += 1
+        contador += 1
+    return soma
 
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
